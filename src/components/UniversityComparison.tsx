@@ -19,6 +19,7 @@ interface University {
   livingCost: string;
   dorm: string;
   postStudyWork: string;
+  verdict: string;
 }
 
 const universities: University[] = [
@@ -27,68 +28,72 @@ const universities: University[] = [
     type: "Public",
     location: "Tallinn (Capital)",
     ranking: "QS 601-650",
-    cybersecurity: "✅ Flagship",
+    cybersecurity: "✅ BEng Flagship (NATO CCDCOE)",
     aiDataScience: "✅ Available",
-    tuition: "€6,160/yr",
-    waiver: "✅ Merit (GPA+SAT)",
+    tuition: "~€7,000/yr",
+    waiver: "✅ 100% Merit (online test + interview)",
     language: "English",
     platform: "DreamApply",
     deadline: "~Mar 15",
-    partTimeJobs: "🟢 Excellent",
-    livingCost: "€600-€800",
-    dorm: "Good",
+    partTimeJobs: "Excellent (capital city)",
+    livingCost: "€700-€1,000/mo",
+    dorm: "Available (~€150-250/mo)",
     postStudyWork: "9 months",
+    verdict: "🟢 PRIMARY TARGET",
   },
   {
-    name: "Univ. of Tartu",
+    name: "University of Tartu",
     type: "Public",
     location: "Tartu",
-    ranking: "QS 301-350",
-    cybersecurity: "✅ CS-focused",
-    aiDataScience: "✅ Strong",
-    tuition: "€6,000-€7,500/yr",
-    waiver: "✅ Merit (GPA)",
+    ranking: "QS 301-350 (Top 1% globally)",
+    cybersecurity: "✅ CS/Computer Engineering track",
+    aiDataScience: "✅ Strong (Robotics specialization)",
+    tuition: "~€6,000/yr",
+    waiver: "✅ 100% Merit (GPA + IT Academy Stipend €240/mo for top 20%)",
     language: "English",
     platform: "DreamApply",
     deadline: "~Apr 1",
-    partTimeJobs: "🟡 Good",
-    livingCost: "€450-€650",
-    dorm: "Excellent",
+    partTimeJobs: "Good (smaller city, academic)",
+    livingCost: "€550-€850/mo",
+    dorm: "Excellent (~€100-200/mo)",
     postStudyWork: "9 months",
+    verdict: "🟢 PRIMARY TARGET",
   },
   {
-    name: "Tallinn Univ.",
+    name: "Tallinn University",
     type: "Public",
     location: "Tallinn",
     ranking: "QS 801-1000",
     cybersecurity: "❌ N/A",
-    aiDataScience: "✅ Informatics",
+    aiDataScience: "✅ Informatics (BCS)",
     tuition: "€3,600-€5,000/yr",
-    waiver: "⚠️ Limited",
+    waiver: "⚠️ Limited partial waivers",
     language: "English",
     platform: "DreamApply",
     deadline: "~Apr 15",
-    partTimeJobs: "🟢 Excellent",
-    livingCost: "€600-€800",
-    dorm: "Good",
+    partTimeJobs: "Excellent (capital city)",
+    livingCost: "€700-€1,000/mo",
+    dorm: "Available",
     postStudyWork: "9 months",
+    verdict: "🟡 BACKUP (no cybersecurity)",
   },
   {
     name: "Estonian Univ. of Life Sciences (EMÜ)",
     type: "Public",
     location: "Tartu",
-    ranking: "Niche (Agriculture/Env.)",
+    ranking: "Niche (Agriculture/Environment)",
     cybersecurity: "❌ N/A",
-    aiDataScience: "⚠️ Geoinformatics",
+    aiDataScience: "⚠️ Geoinformatics only",
     tuition: "€3,000-€4,500/yr",
     waiver: "⚠️ Limited",
-    language: "English (some)",
+    language: "English (some programs)",
     platform: "DreamApply",
     deadline: "~May 1",
-    partTimeJobs: "🟡 Good",
-    livingCost: "€450-€650",
+    partTimeJobs: "Good (Tartu)",
+    livingCost: "€550-€850/mo",
     dorm: "Excellent",
     postStudyWork: "9 months",
+    verdict: "❌ NOT RELEVANT for Cyber/AI",
   },
   {
     name: "Estonian Academy of Arts (EKA)",
@@ -96,57 +101,60 @@ const universities: University[] = [
     location: "Tallinn",
     ranking: "Niche (Arts/Design)",
     cybersecurity: "❌ N/A",
-    aiDataScience: "⚠️ Interaction Design",
+    aiDataScience: "⚠️ Interaction Design only",
     tuition: "€4,500-€6,000/yr",
     waiver: "⚠️ Portfolio-based",
     language: "English",
     platform: "DreamApply",
     deadline: "~Mar 1",
-    partTimeJobs: "🟢 Excellent",
-    livingCost: "€600-€800",
+    partTimeJobs: "Excellent (Tallinn)",
+    livingCost: "€700-€1,000/mo",
     dorm: "Limited",
     postStudyWork: "9 months",
+    verdict: "❌ NOT RELEVANT for Cyber/AI",
   },
   {
     name: "Estonian Business School (EBS)",
     type: "Private",
     location: "Tallinn",
-    ranking: "Top Baltic Business",
+    ranking: "Top Baltic Business School",
     cybersecurity: "❌ N/A",
-    aiDataScience: "⚠️ Business Analytics",
+    aiDataScience: "⚠️ Business Analytics minor",
     tuition: "€4,900-€6,900/yr",
-    waiver: "⚠️ Partial merit",
+    waiver: "⚠️ Partial merit only",
     language: "English",
-    platform: "Direct",
+    platform: "Direct application",
     deadline: "Rolling",
-    partTimeJobs: "🟢 Excellent",
-    livingCost: "€600-€800",
-    dorm: "No (private housing)",
+    partTimeJobs: "Excellent (Tallinn)",
+    livingCost: "€700-€1,000/mo",
+    dorm: "None (private housing only)",
     postStudyWork: "9 months",
+    verdict: "❌ NOT RELEVANT for Cyber/AI",
   },
   {
     name: "Estonian Entrepreneurship Univ. (EUAS)",
     type: "Private",
     location: "Tallinn",
     ranking: "Applied Sciences",
-    cybersecurity: "✅ IT Security",
-    aiDataScience: "✅ Software Dev",
+    cybersecurity: "✅ IT Security program",
+    aiDataScience: "✅ Software Development",
     tuition: "€4,200-€5,400/yr",
-    waiver: "⚠️ Partial",
+    waiver: "⚠️ Partial only",
     language: "English",
-    platform: "Direct",
+    platform: "Direct application",
     deadline: "~Jun 1",
-    partTimeJobs: "🟢 Excellent",
-    livingCost: "€600-€800",
+    partTimeJobs: "Excellent (Tallinn)",
+    livingCost: "€700-€1,000/mo",
     dorm: "Partner housing",
     postStudyWork: "9 months",
+    verdict: "🟡 SAFETY NET (easier admission)",
   },
 ];
 
 const factors = [
   "Location", "Ranking", "Cybersecurity", "AI / Data Science", "Tuition",
   "100% Waiver", "Language", "Platform", "Deadline", "Part-time Jobs",
-  "Living Cost/Mo", "Dorm", "Post-Study Work",
+  "Living Cost/Mo", "Dorm", "Post-Study Work", "Verdict",
 ];
 
 const getField = (u: University, factor: string): string => {
@@ -155,7 +163,7 @@ const getField = (u: University, factor: string): string => {
     "AI / Data Science": "aiDataScience", "Tuition": "tuition", "100% Waiver": "waiver",
     "Language": "language", "Platform": "platform", "Deadline": "deadline",
     "Part-time Jobs": "partTimeJobs", "Living Cost/Mo": "livingCost",
-    "Dorm": "dorm", "Post-Study Work": "postStudyWork",
+    "Dorm": "dorm", "Post-Study Work": "postStudyWork", "Verdict": "verdict",
   };
   return u[map[factor]] || "";
 };
@@ -167,11 +175,11 @@ export const UniversityComparison = () => {
         🏫 All Estonian Universities — Full Comparison
       </h3>
       <p className="text-muted-foreground text-sm mb-4">
-        Public & private institutions evaluated for a Bangladeshi student targeting Cyber/AI
+        7 institutions evaluated across 14 factors for a Bangladeshi Cyber/AI applicant
       </p>
       <div className="flex gap-2 mb-4 flex-wrap">
-        <Badge variant="default">🟢 Recommended</Badge>
-        <Badge variant="secondary">⚠️ Partial fit</Badge>
+        <Badge variant="default">🟢 Primary Target</Badge>
+        <Badge variant="secondary">🟡 Backup / Safety</Badge>
         <Badge variant="outline">❌ Not relevant</Badge>
       </div>
       <div className="overflow-x-auto rounded-lg border border-border">
@@ -180,7 +188,7 @@ export const UniversityComparison = () => {
             <TableRow className="bg-muted/50">
               <TableHead className="font-bold min-w-[120px] sticky left-0 bg-muted/50 z-10">Factor</TableHead>
               {universities.map((u) => (
-                <TableHead key={u.name} className="font-bold min-w-[140px] text-center">
+                <TableHead key={u.name} className="font-bold min-w-[160px] text-center">
                   <div>{u.name}</div>
                   <Badge variant={u.type === "Public" ? "default" : "secondary"} className="text-[10px] mt-1">
                     {u.type}
@@ -205,9 +213,10 @@ export const UniversityComparison = () => {
       </div>
       <div className="mt-4 p-4 bg-primary/10 rounded-xl border border-primary/20">
         <p className="text-sm text-card-foreground">
-          <strong>💡 Strategy:</strong> Apply to <strong>TalTech + Tartu</strong> (best for Cyber/AI with 100% waiver).
-          Add <strong>EUAS</strong> as a safety net (easier admission, IT Security program). The other universities are
-          less relevant for your specific goals but worth knowing about.
+          <strong>Strategy:</strong> Apply to <strong>TalTech</strong> (flagship cybersecurity, Proctorio entrance test required) +{" "}
+          <strong>University of Tartu</strong> (higher global ranking, IT Academy stipend €240/mo for top 20%).
+          Add <strong>EUAS</strong> as a safety net (lower admission bar, IT Security program). All other universities
+          lack relevant Cyber/AI programs.
         </p>
       </div>
     </div>

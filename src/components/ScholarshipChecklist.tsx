@@ -6,7 +6,7 @@ interface ChecklistItem {
   task: string;
   deadline: string;
   details: string;
-  category: "academic" | "documents" | "application" | "financial" | "visa";
+  category: "academic" | "documents" | "application" | "financial" | "visa" | "skills";
 }
 
 const checklistItems: ChecklistItem[] = [
@@ -14,91 +14,112 @@ const checklistItems: ChecklistItem[] = [
     id: "hsc",
     task: "Complete HSC with GPA 5.0",
     deadline: "June–Aug 2026",
-    details: "Non-negotiable. Your GPA is the #1 factor for merit-based tuition waivers.",
+    details: "Non-negotiable. GPA is the #1 factor for merit-based tuition waivers at both TalTech and Tartu.",
     category: "academic",
   },
   {
     id: "ielts",
-    task: "Take IELTS — Target 7.0+",
+    task: "Take IELTS — Target 7.0+ (no band < 6.5)",
     deadline: "Sept–Dec 2026",
-    details: "Register at British Council BD (~28,450 BDT). Book early as slots fill fast.",
+    details: "Register at British Council Bangladesh (~28,450 BDT). Book early — slots fill fast. Alternative: TOEFL/PTE also accepted.",
     category: "academic",
   },
   {
     id: "sat",
-    task: "Take SAT — Target 1350+",
+    task: "Take SAT — Target 1350+ (Math 750+)",
     deadline: "Jan–Mar 2027",
-    details: "Register at collegeboard.org (~15,000 BDT). Focus on Math for engineering applications.",
+    details: "NOT mandatory, but Tartu explicitly states SAT confers significant scholarship ranking advantage. Cost: ~15,000 BDT via collegeboard.org.",
     category: "academic",
-  },
-  {
-    id: "passport",
-    task: "Apply for E-Passport",
-    deadline: "June–Aug 2026",
-    details: "Apply immediately after exams. Costs ~8,000 BDT. Processing takes 3–6 weeks.",
-    category: "documents",
   },
   {
     id: "nid",
     task: "Get NID / Smart Card",
     deadline: "June 2026",
-    details: "Required for passport application. Apply at local election office.",
+    details: "Prerequisite for all other documents. Apply at local election office. Ensure BRC is 17-digit digital certificate.",
+    category: "documents",
+  },
+  {
+    id: "passport",
+    task: "Apply for E-Passport",
+    deadline: "June–Aug 2026",
+    details: "Apply immediately after NID. Cost: ~8,000 BDT. Processing: 3-6 weeks. Must be valid for 6+ months beyond travel date.",
     category: "documents",
   },
   {
     id: "transcripts",
-    task: "Get Notarized Transcripts",
+    task: "Get Notarized Transcripts (SSC + HSC)",
     deadline: "Sept 2027",
-    details: "Get SSC + HSC transcripts notarized by a certified notary. Multiple copies needed.",
+    details: "Multiple notarized copies needed. Certified notary only. Some universities may require Apostille.",
     category: "documents",
   },
   {
+    id: "portfolio",
+    task: "Build Technical Portfolio",
+    deadline: "Apr–Sept 2027",
+    details: "GitHub with coding projects. TryHackMe/HackTheBox badges. Optional: CompTIA Security+ basics. Not mandatory but strengthens waiver application.",
+    category: "skills",
+  },
+  {
     id: "motivation",
-    task: "Write Motivation Letters",
+    task: "Write Motivation Letters (5+ drafts each)",
     deadline: "Oct 2027",
-    details: "One per university. Highlight: why Estonia, why this program, future goals, financial need.",
+    details: "One per university. Structure: personal story → why THIS program → why Estonia → career goals. Mention specific professors/labs. Have native English speaker review.",
     category: "application",
   },
   {
     id: "dreamapply-taltech",
     task: "Apply to TalTech via DreamApply",
     deadline: "By March 15, 2028",
-    details: "Submit: transcripts, IELTS, SAT, motivation letter, passport copy. Request tuition waiver.",
+    details: "Submit: transcripts, IELTS, SAT (if taken), motivation letter, passport copy. TalTech has Proctorio-monitored online entrance test + interview.",
     category: "application",
   },
   {
     id: "dreamapply-tartu",
-    task: "Apply to Univ. of Tartu via DreamApply",
+    task: "Apply to University of Tartu via DreamApply",
     deadline: "By April 1, 2028",
-    details: "Similar documents as TalTech. Apply for scholarship explicitly in the application form.",
+    details: "Check scholarship box explicitly. Tartu offers IT Academy Stipend (€240/mo) for top 20% of BSc students.",
+    category: "application",
+  },
+  {
+    id: "dreamapply-euas",
+    task: "Apply to EUAS (safety net)",
+    deadline: "By June 1, 2028",
+    details: "Direct application (not DreamApply). IT Security program. Easier admission, partial waiver possible. Deadline is later — good backup.",
     category: "application",
   },
   {
     id: "bank",
-    task: "Prepare Bank Statement (€7,200+)",
-    deadline: "April 2028",
-    details: "Show ~9.5 Lakh BDT in account. Money should sit for 3–6 months. Can be father's account with sponsorship letter.",
+    task: "Prepare Bank Statement (min €4,200)",
+    deadline: "Jan–Apr 2028",
+    details: "Minimum: €350/month × 12 = €4,200 (~6.05 Lakh BDT). Must sit in account 3-6 months. Can be father's account with sponsorship letter.",
     category: "financial",
   },
   {
     id: "insurance",
-    task: "Purchase Health Insurance",
+    task: "Purchase EU-Compliant Health Insurance",
     deadline: "June 2028",
-    details: "EU-compliant health insurance. Can buy Estonian provider (Swisscare, DR-WALTER) ~€300–€500/year.",
+    details: "Schengen-compliant coverage required. ~€100-250/year. Providers: Swisscare, DR-WALTER, or buy in Estonia after enrollment.",
     category: "financial",
   },
   {
+    id: "india-trip",
+    task: "Book India Trip for Visa Interview",
+    deadline: "May 2028",
+    details: "Estonian Embassy is in New Delhi (no embassy in BD). Budget: ~50,000 BDT round-trip + 3-day stay. Check if Indian transit visa needed.",
+    category: "visa",
+  },
+  {
     id: "visa",
-    task: "Apply for Estonia D-Visa",
+    task: "Apply for Estonia D-Visa (New Delhi)",
     deadline: "June–July 2028",
-    details: "Via VFS Global (New Delhi) or online TRP. Visa fee ~€120. May need Indian transit visa.",
+    details: "Via VFS Global or direct embassy appointment. Fee: €100 + VFS €22. Processing: 10-30 days. Apply 3+ months before departure.",
     category: "visa",
   },
   {
     id: "flight",
     task: "Book One-Way Flight to Tallinn",
     deadline: "August 2028",
-    details: "Budget ~100,000 BDT. Book 2–3 months early for best prices. Carry €1,000 cash.",
+    details: "Budget: ~€650 (~93,600 BDT). Book 2-3 months early. Carry ~€1,000 cash. Pack warm clothes for Estonian winter.",
     category: "visa",
   },
 ];
@@ -106,7 +127,8 @@ const checklistItems: ChecklistItem[] = [
 const categoryColors: Record<string, string> = {
   academic: "bg-primary/10 text-primary border-primary/30",
   documents: "bg-accent/10 text-accent border-accent/30",
-  application: "bg-secondary text-secondary-foreground border-border",
+  skills: "bg-secondary text-secondary-foreground border-border",
+  application: "bg-primary/10 text-primary border-primary/30",
   financial: "bg-success/10 text-success border-success/30",
   visa: "bg-destructive/10 text-destructive border-destructive/30",
 };
@@ -114,6 +136,7 @@ const categoryColors: Record<string, string> = {
 const categoryLabels: Record<string, string> = {
   academic: "📚 Academic",
   documents: "📄 Documents",
+  skills: "💻 Skills",
   application: "📝 Application",
   financial: "💰 Financial",
   visa: "✈️ Visa & Travel",
@@ -138,10 +161,10 @@ export const ScholarshipChecklist = () => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
           <h3 className="text-2xl font-bold text-card-foreground">
-            ✅ Scholarship Application Checklist
+            Application Checklist ({checklistItems.length} Steps)
           </h3>
           <p className="text-muted-foreground text-sm mt-1">
-            Track every step from exams to departure
+            Track every milestone from HSC exams to departure. Click to mark complete.
           </p>
         </div>
         <div className="flex items-center gap-3">
@@ -151,7 +174,7 @@ export const ScholarshipChecklist = () => {
               style={{ width: `${progress}%` }}
             />
           </div>
-          <span className="text-sm font-semibold text-primary">{progress}%</span>
+          <span className="text-sm font-semibold text-primary">{checked.size}/{checklistItems.length}</span>
         </div>
       </div>
 
