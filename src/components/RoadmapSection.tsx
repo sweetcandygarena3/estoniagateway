@@ -4,96 +4,96 @@ export const RoadmapSection = () => {
   const timelineSteps = [
     {
       number: 1,
-      title: "June - August 2026: The Academic Foundation",
-      description:
-        "Crush the HSC exams. Secure GPA 5.0. No distractions. Apply for your NID/Smart Card immediately (takes time in BD) and apply for your E-Passport (~8,000 BDT) right after exams.",
-      color: "primary",
+      title: "June - August 2026: Academic Foundation",
+      description: "Crush HSC exams → GPA 5.0. Apply for NID/Smart Card and E-Passport (~8,000 BDT) immediately after exams.",
+      icon: "📚",
+      gradient: "from-primary to-accent",
     },
     {
       number: 2,
-      title: "Sept 2026 - March 2027: The Standardized Tests",
-      description:
-        "Start intensive preparation. Register for IELTS (~28,450 BDT) target: 7.0+. Register for SAT (~15,000 BDT) target: 1350+. These scores are your weapons to guarantee the 100% scholarship.",
-      color: "primary",
+      title: "Sept 2026 - March 2027: Standardized Tests",
+      description: "IELTS (~28,450 BDT) target 7.0+. SAT (~15,000 BDT) target 1350+. These scores guarantee your 100% scholarship.",
+      icon: "🎯",
+      gradient: "from-accent to-primary",
     },
     {
       number: 3,
-      title: "Oct 2027 - Jan 2028: University Application Phase",
-      description:
-        "Estonian university portals (DreamApply) open. Apply to TalTech and Tartu for Cyber/AI. Submit motivation letters, transcripts (notarized), IELTS, and SAT. Apply explicitly for the Merit-Based Tuition Waiver.",
-      color: "primary",
+      title: "Oct 2027 - Jan 2028: Applications",
+      description: "Apply via DreamApply to TalTech & Tartu for Cyber/AI. Submit motivation letters, transcripts, IELTS, SAT. Apply for Merit-Based Tuition Waiver.",
+      icon: "📝",
+      gradient: "from-primary to-success",
     },
     {
       number: 4,
-      title: "April 2028 - May 2028: Offer & Bank Statement",
-      description:
-        "Receive Offer Letter + 100% Scholarship Confirmation! Now, prepare the Bank Statement. You need to show ~€600 x 12 months = €7,200 (approx. 9.5 Lakh BDT) in an account to prove you can survive the first year.",
-      color: "primary",
+      title: "April - May 2028: Offer & Bank Statement",
+      description: "Receive offer + 100% waiver! Prepare bank statement: ~€600 × 12 = €7,200 (≈9.5 Lakh BDT) to prove you can survive year 1.",
+      icon: "🏦",
+      gradient: "from-success to-accent",
     },
     {
       number: 5,
-      title: "June 2028 - July 2028: Visa Processing (Embassy)",
-      description:
-        "Estonia does NOT have a full embassy in Bangladesh. You will likely apply for the D-Visa through the VFS Global center in New Delhi, India (requires Indian travel visa) OR apply for TRP online and travel. Pay Visa fees (~€120) + Insurance.",
-      color: "primary",
+      title: "June - July 2028: Visa Processing",
+      description: "Apply for D-Visa via VFS Global (New Delhi) or online TRP. Pay visa fees (~€120) + health insurance. May need Indian transit visa.",
+      icon: "✈️",
+      gradient: "from-accent to-primary",
     },
     {
       number: 6,
       title: "August 2028: Departure 🎉",
-      description:
-        "Book one-way flight (~100,000 BDT). Pack warm clothes. Carry initial cash (€1000). Arrive in Tallinn, Estonia. Settle into dorms, get local ID, and begin your Cyber/AI degree.",
-      color: "success",
+      description: "Book flight (~100,000 BDT). Pack warm clothes. Carry €1,000 cash. Arrive in Tallinn and begin your Cyber/AI degree!",
+      icon: "🌍",
+      gradient: "from-primary to-success",
     },
   ];
 
   const nextQuestions = [
-    "How exactly do I write a Motivation Letter that guarantees a 100% scholarship at TalTech?",
-    "If Estonia doesn't have an embassy in BD, what is the exact step-by-step process to go to New Delhi for the visa?",
-    "What specific IT skills (like Python, Linux) should I learn in the 1.5 years before leaving to secure a part-time tech job instead of a delivery job?",
-    "How does the Bank Statement actually work? Can the money be in my father's account, and how long does it need to sit there?",
-    "What is the backup plan if I get accepted but DO NOT get the 100% scholarship? Which countries are plan B?",
+    "How to write a Motivation Letter that guarantees a 100% scholarship at TalTech?",
+    "Step-by-step visa process via New Delhi without an Estonian embassy in BD?",
+    "What IT skills (Python, Linux) to learn in 1.5 years for tech part-time jobs?",
+    "How does the Bank Statement work? Can money be in father's account?",
+    "Backup plan if accepted but NO 100% scholarship? Plan B countries?",
   ];
 
   return (
     <div>
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-foreground">
-          The A-Z Roadmap (2026 - 2028)
-        </h2>
+        <h2 className="text-3xl font-bold gradient-text">The A-Z Roadmap (2026 - 2028)</h2>
         <p className="text-muted-foreground mt-2">
-          Your step-by-step timeline from today until your first day in Estonia.
+          Your step-by-step timeline from today to your first day in Estonia.
         </p>
       </div>
 
-      <div className="relative border-l-2 border-border ml-4 md:ml-6 space-y-8 pb-12">
+      <div className="space-y-4">
         {timelineSteps.map((step, idx) => (
           <div
             key={idx}
-            className="timeline-item relative pl-8 md:pl-12 group hover:translate-x-2 transition-transform duration-300"
+            className="glass-card rounded-2xl p-5 md:p-6 flex gap-4 md:gap-6 items-start group hover:-translate-y-0.5 transition-all duration-300 hover:shadow-xl"
           >
-            <div
-              className={`absolute -left-3.5 top-1 bg-${step.color} w-7 h-7 rounded-full border-4 border-background flex items-center justify-center text-${step.color}-foreground text-xs font-bold shadow-md group-hover:scale-110 transition-transform duration-300`}
-            >
-              {step.number}
+            <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center text-2xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+              {step.icon}
             </div>
-            <h3 className="text-lg font-bold text-card-foreground mb-2">
-              {step.title}
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              {step.description}
-            </p>
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                  Step {step.number}
+                </span>
+              </div>
+              <h3 className="text-lg font-bold text-card-foreground mb-1">{step.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
+            </div>
           </div>
         ))}
       </div>
 
-      <div className="bg-accent/10 p-6 rounded-xl border border-accent/30 mt-6">
-        <h3 className="text-lg font-bold text-accent mb-4 flex items-center gap-2">
-          🔍 5 Questions You Should Ask Next:
+      <div className="glass-card p-6 rounded-2xl mt-8 border-l-4 border-accent">
+        <h3 className="text-lg font-bold text-card-foreground mb-4 flex items-center gap-2">
+          🔍 5 Questions You Should Ask Next
         </h3>
-        <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-          {nextQuestions.map((question, idx) => (
-            <li key={idx} className="leading-relaxed">
-              "{question}"
+        <ul className="space-y-2">
+          {nextQuestions.map((q, idx) => (
+            <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+              <span className="text-accent font-bold">{idx + 1}.</span>
+              <span>{q}</span>
             </li>
           ))}
         </ul>

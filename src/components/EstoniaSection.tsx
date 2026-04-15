@@ -4,69 +4,67 @@ export const EstoniaSection = () => {
   const factors = [
     {
       emoji: "🎓",
-      title: "1. Education Quality",
-      description:
-        "Exceptional for IT. Estonia is known as 'e-Estonia' (Skype was invented here). Universities like TalTech and Tartu have world-class Cybersecurity, Software Eng., and Robotics labs. Highly recognized globally.",
+      title: "Education Quality",
+      description: "Exceptional for IT. Estonia = 'e-Estonia' (Skype was invented here). TalTech and Tartu have world-class Cybersecurity and AI labs.",
+      grade: "A+",
     },
     {
       emoji: "💰",
-      title: "2. Affordability",
-      description:
-        "Excellent. Living cost is ~€500-€700/month (much lower than UK/USA/Australia). Tuition is €6k-€8k/year, but Tuition Waivers are available for top international students. Very budget-friendly if you get the waiver.",
+      title: "Affordability",
+      description: "Living cost ~€500-€700/month (much lower than UK/USA). Tuition €6k-€8k/year, but 100% waivers available for top students.",
+      grade: "A",
     },
     {
       emoji: "⏰",
-      title: "3. Work While Studying",
-      description:
-        "Very Flexible. International students do NOT need a separate work permit. You can work unlimited hours legally, as long as it does not interfere with your studies. Usually, students work 20 hrs/week.",
+      title: "Work While Studying",
+      description: "No separate work permit needed. Unlimited hours legally. Students typically work 20 hrs/week in tech, delivery, or cafes.",
+      grade: "A+",
     },
     {
       emoji: "💼",
-      title: "4. Work After Graduation",
-      description:
-        "9 Months Post-Study. You get 9 months to stay and find a job after graduation. If you find a job, you instantly get a Temporary Residence Permit for employment.",
+      title: "Post-Graduation Work",
+      description: "9 months post-study visa. Find a job → instant Temporary Residence Permit. Clear path to staying in the EU.",
+      grade: "A",
     },
     {
       emoji: "📈",
-      title: "5. Jobs + ROI",
-      description:
-        "High Demand. Cybersecurity and AI are the most demanded sectors. Starting salaries post-graduation are around €2,000 - €3,000/month. The long-term ROI is massive.",
+      title: "Jobs & ROI",
+      description: "Cybersecurity and AI are most demanded. Starting salaries €2,000-€3,000/month. Massive long-term ROI.",
+      grade: "A+",
     },
     {
       emoji: "🏡",
-      title: "6. Settlement",
-      description:
-        "Clear Pathway. After living and working in Estonia for 5 years on a TRP (Temporary Residence Permit), and passing a basic B1 Estonian language test, you are eligible for Permanent Residency (PR).",
+      title: "Settlement Path",
+      description: "5 years on TRP + B1 Estonian language = Permanent Residency. Clear, achievable pathway to EU citizenship.",
+      grade: "A",
     },
   ];
 
   return (
     <div>
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-foreground">
-          Estonia: The 6-Factor Assessment
-        </h2>
+        <h2 className="text-3xl font-bold gradient-text">Estonia: The 6-Factor Assessment</h2>
         <p className="text-muted-foreground mt-2">
-          Evaluating Estonia based on your specific requirements and constraints as a
-          Bangladeshi student.
+          Evaluating Estonia for a Bangladeshi student targeting Cyber/AI.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {factors.map((factor, idx) => (
           <div
             key={idx}
-            className="bg-card p-6 rounded-xl shadow-sm border border-border hover:shadow-md hover:border-primary/30 transition-all duration-300 group"
+            className="glass-card p-6 rounded-2xl group hover:glow-primary transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-              {factor.emoji}
+            <div className="flex items-start justify-between mb-3">
+              <div className="text-4xl group-hover:scale-110 transition-transform duration-300">
+                {factor.emoji}
+              </div>
+              <span className="text-xs font-bold px-2 py-1 rounded-full bg-success/20 text-success border border-success/30">
+                {factor.grade}
+              </span>
             </div>
-            <h3 className="text-xl font-bold text-card-foreground mb-2">
-              {factor.title}
-            </h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              {factor.description}
-            </p>
+            <h3 className="text-xl font-bold text-card-foreground mb-2">{factor.title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">{factor.description}</p>
           </div>
         ))}
       </div>
