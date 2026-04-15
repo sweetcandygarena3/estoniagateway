@@ -1,13 +1,14 @@
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
 import { AlertCircle } from "lucide-react";
+import { CostCalculator } from "./CostCalculator";
 
 export const FinanceSection = () => {
   const budgetData = [
     { name: "Passport & Exams", value: 52000, color: "#0ea5e9" },
     { name: "Application & Notary", value: 20000, color: "#6366f1" },
-    { name: "Visa Fee & Insurance", value: 35000, color: "#8b5cf6" },
+    { name: "Visa & Insurance", value: 35000, color: "#8b5cf6" },
     { name: "One-way Flight", value: 100000, color: "#a855f7" },
-    { name: "Bank/Living (Remaining)", value: 1293000, color: "#22c55e" },
+    { name: "Bank/Living", value: 1293000, color: "#22c55e" },
   ];
 
   const incomeVsCostData = [
@@ -18,22 +19,19 @@ export const FinanceSection = () => {
   return (
     <div className="space-y-8">
       <div className="mb-8">
-        <h2 className="text-3xl font-bold text-foreground">
-          Financial Masterplan & The ROI Truth
-        </h2>
+        <h2 className="text-3xl font-bold gradient-text">Financial Masterplan & ROI</h2>
         <p className="text-muted-foreground mt-2">
-          Breaking down your 15 Lakh BDT budget and answering your crucial ROI questions
-          with real data.
+          Breaking down your 15 Lakh BDT budget with real data.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
+        <div className="glass-card p-6 rounded-2xl">
           <h3 className="text-xl font-bold text-card-foreground mb-2 text-center">
-            Your 15 Lakh BDT Budget Allocation
+            15 Lakh BDT Budget Allocation
           </h3>
           <p className="text-sm text-muted-foreground mb-6 text-center">
-            Assuming you win a 100% Tuition Waiver
+            Assuming 100% Tuition Waiver
           </p>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -53,7 +51,7 @@ export const FinanceSection = () => {
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
-              <Tooltip formatter={(value) => `${value.toLocaleString()} BDT`} />
+              <Tooltip formatter={(value: number) => `${value.toLocaleString()} BDT`} />
             </PieChart>
           </ResponsiveContainer>
           <div className="mt-6 space-y-2 text-sm">
@@ -63,13 +61,13 @@ export const FinanceSection = () => {
               { label: "Visa Fee & Insurance", value: "~35,000 BDT" },
               { label: "One-way Flight", value: "~100,000 BDT" },
             ].map((item, idx) => (
-              <div key={idx} className="flex justify-between border-b pb-1 text-muted-foreground">
+              <div key={idx} className="flex justify-between border-b border-border/50 pb-1 text-muted-foreground">
                 <span>{item.label}</span>
                 <span className="font-semibold">{item.value}</span>
               </div>
             ))}
             <div className="flex justify-between pt-2 text-primary font-bold">
-              <span>Total Initial Sunk Cost</span>
+              <span>Total Initial Cost</span>
               <span>~207,000 BDT</span>
             </div>
             <div className="flex justify-between pt-1 text-success font-bold">
@@ -79,19 +77,19 @@ export const FinanceSection = () => {
           </div>
         </div>
 
-        <div className="bg-card p-6 rounded-xl shadow-sm border border-border">
+        <div className="glass-card p-6 rounded-2xl">
           <h3 className="text-xl font-bold text-card-foreground mb-2 text-center">
             Part-Time Income vs. Living Cost
           </h3>
           <p className="text-sm text-muted-foreground mb-6 text-center">
-            Monthly (€) — Earning €6.5/hr, working 20 hrs/week
+            Monthly (€) — €6.5/hr, 20 hrs/week
           </p>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={incomeVsCostData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-              <XAxis dataKey="category" tick={{ fill: '#64748b' }} />
-              <YAxis tick={{ fill: '#64748b' }} />
-              <Tooltip formatter={(value) => `€${value}`} />
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+              <XAxis dataKey="category" tick={{ fill: 'hsl(var(--muted-foreground))' }} />
+              <YAxis tick={{ fill: 'hsl(var(--muted-foreground))' }} />
+              <Tooltip formatter={(value: number) => `€${value}`} />
               <Bar dataKey="amount" radius={[8, 8, 0, 0]}>
                 {incomeVsCostData.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
@@ -100,34 +98,27 @@ export const FinanceSection = () => {
             </BarChart>
           </ResponsiveContainer>
 
-          <div className="mt-6 p-4 bg-destructive/10 rounded-lg border-l-4 border-destructive">
+          <div className="mt-6 p-4 bg-destructive/10 rounded-xl border-l-4 border-destructive">
             <div className="flex items-start gap-2 mb-3">
               <AlertCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
-              <h4 className="font-bold text-card-foreground">
-                The Hard Truth About Your ROI Questions:
-              </h4>
+              <h4 className="font-bold text-card-foreground">The Hard Truth:</h4>
             </div>
             <div className="space-y-3 text-sm">
               <div>
                 <p className="text-card-foreground font-semibold mb-1">
-                  Q: Can I earn my 15 Lakh investment back within 1 year of part-time
-                  work?
+                  Can I earn 15 Lakh back in 1 year of part-time?
                 </p>
                 <p className="text-muted-foreground">
-                  <strong>NO.</strong> Part-time work (Wolt, Bolt, cafes) earns about
-                  €500-€600/month. Your living cost is ~€500/month. You will break even
-                  on daily survival. The real ROI comes AFTER graduation when you earn
-                  €3000/month as an AI/Cyber engineer.
+                  <strong>NO.</strong> Part-time earns €500-€600/month. Living costs ~€500/month. You break even.
+                  Real ROI comes AFTER graduation: €3000/month as an AI/Cyber engineer.
                 </p>
               </div>
-
               <div>
                 <p className="text-card-foreground font-semibold mb-1">
-                  Q: Can I pay tuition fees from part-time work?
+                  Can I pay tuition from part-time work?
                 </p>
                 <p className="text-muted-foreground">
-                  <strong>NO.</strong> You cannot save €6,000/year for tuition by
-                  delivering food part-time while studying engineering. It is impossible.{" "}
+                  <strong>NO.</strong> €6,000/year from part-time while studying engineering is impossible.{" "}
                   <strong>You MUST secure the 100% scholarship.</strong>
                 </p>
               </div>
@@ -135,6 +126,8 @@ export const FinanceSection = () => {
           </div>
         </div>
       </div>
+
+      <CostCalculator />
     </div>
   );
 };

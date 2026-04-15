@@ -8,7 +8,7 @@ export const generateStudyGuidePDF = () => {
 
   // Title
   doc.setFontSize(22);
-  doc.setTextColor(14, 165, 233); // primary blue
+  doc.setTextColor(14, 165, 233);
   doc.text("Estonia Study Guide", pageWidth / 2, y, { align: "center" });
   y += 10;
   doc.setFontSize(10);
@@ -48,19 +48,17 @@ export const generateStudyGuidePDF = () => {
   doc.text("A-Z Roadmap (2026 - 2028)", 14, y);
   y += 8;
 
-  const roadmapSteps = [
-    ["June-Aug 2026", "Crush HSC exams. GPA 5.0. Apply for NID & E-Passport."],
-    ["Sept 2026-Mar 2027", "IELTS (target 7.0+) & SAT (target 1350+) preparation."],
-    ["Oct 2027-Jan 2028", "Apply to TalTech & Tartu via DreamApply. Submit all docs."],
-    ["Apr-May 2028", "Receive offer + scholarship. Prepare bank statement (€7,200+)."],
-    ["Jun-Jul 2028", "Apply for D-Visa (VFS New Delhi or online TRP). Buy insurance."],
-    ["Aug 2028", "Book flight (~100k BDT). Depart for Tallinn! 🎉"],
-  ];
-
   autoTable(doc, {
     startY: y,
     head: [["Timeline", "Action Items"]],
-    body: roadmapSteps,
+    body: [
+      ["June-Aug 2026", "Crush HSC exams. GPA 5.0. Apply for NID & E-Passport."],
+      ["Sept 2026-Mar 2027", "IELTS (target 7.0+) & SAT (target 1350+) preparation."],
+      ["Oct 2027-Jan 2028", "Apply to TalTech & Tartu via DreamApply. Submit all docs."],
+      ["Apr-May 2028", "Receive offer + scholarship. Prepare bank statement (€7,200+)."],
+      ["Jun-Jul 2028", "Apply for D-Visa (VFS New Delhi or online TRP). Buy insurance."],
+      ["Aug 2028", "Book flight (~100k BDT). Depart for Tallinn!"],
+    ],
     styles: { fontSize: 9 },
     headStyles: { fillColor: [99, 102, 241] },
     columnStyles: { 0: { cellWidth: 40, fontStyle: "bold" } },
@@ -69,30 +67,27 @@ export const generateStudyGuidePDF = () => {
 
   y = (doc as any).lastAutoTable.finalY + 15;
 
-  // University Comparison
-  if (y > 230) {
-    doc.addPage();
-    y = 20;
-  }
+  // University Comparison - ALL universities
+  if (y > 180) { doc.addPage(); y = 20; }
 
   doc.setFontSize(16);
   doc.setTextColor(30);
-  doc.text("TalTech vs University of Tartu", 14, y);
+  doc.text("All Estonian Universities — Comparison", 14, y);
   y += 8;
 
   autoTable(doc, {
     startY: y,
-    head: [["Factor", "TalTech", "Univ. of Tartu"]],
+    head: [["University", "Type", "Tuition", "Waiver", "Cyber/AI", "Living Cost"]],
     body: [
-      ["Location", "Tallinn (Capital)", "Tartu (Uni town)"],
-      ["Tuition (non-EU)", "€6,160/year", "€6,000-€7,500/year"],
-      ["100% Waiver", "Merit-based (GPA+SAT)", "Merit-based (GPA)"],
-      ["Application Deadline", "~March 15", "~April 1"],
-      ["Living Cost/Month", "€600-€800", "€450-€650"],
-      ["Part-time Jobs", "Excellent (tech hub)", "Good (smaller city)"],
-      ["Post-Study Work", "9 months", "9 months"],
+      ["TalTech", "Public", "€6,160/yr", "Merit (GPA+SAT)", "Flagship", "€600-€800"],
+      ["Univ. of Tartu", "Public", "€6,000-€7,500/yr", "Merit (GPA)", "Strong", "€450-€650"],
+      ["Tallinn Univ.", "Public", "€3,600-€5,000/yr", "Limited", "Informatics", "€600-€800"],
+      ["Estonian ULS (EMU)", "Public", "€3,000-€4,500/yr", "Limited", "Geoinformatics", "€450-€650"],
+      ["Estonian Academy of Arts", "Public", "€4,500-€6,000/yr", "Portfolio", "Interaction Design", "€600-€800"],
+      ["Estonian Business School", "Private", "€4,900-€6,900/yr", "Partial", "Business Analytics", "€600-€800"],
+      ["EUAS", "Private", "€4,200-€5,400/yr", "Partial", "IT Security", "€600-€800"],
     ],
-    styles: { fontSize: 9 },
+    styles: { fontSize: 8 },
     headStyles: { fillColor: [14, 165, 233] },
     alternateRowStyles: { fillColor: [245, 247, 250] },
   });
@@ -100,10 +95,7 @@ export const generateStudyGuidePDF = () => {
   y = (doc as any).lastAutoTable.finalY + 15;
 
   // Scholarship Checklist
-  if (y > 200) {
-    doc.addPage();
-    y = 20;
-  }
+  if (y > 180) { doc.addPage(); y = 20; }
 
   doc.setFontSize(16);
   doc.setTextColor(30);
@@ -131,6 +123,30 @@ export const generateStudyGuidePDF = () => {
     styles: { fontSize: 8 },
     headStyles: { fillColor: [34, 197, 94] },
     columnStyles: { 0: { cellWidth: 15 } },
+    alternateRowStyles: { fillColor: [245, 247, 250] },
+  });
+
+  // 100% Waiver Strategy page
+  doc.addPage();
+  y = 20;
+  doc.setFontSize(16);
+  doc.setTextColor(30);
+  doc.text("100% Tuition Waiver Strategy", 14, y);
+  y += 8;
+
+  autoTable(doc, {
+    startY: y,
+    head: [["Step", "Action", "Key Details"]],
+    body: [
+      ["1", "Understand Merit System", "Top 10-20% of applicants get full waivers. Composite: GPA + SAT + IELTS + Letter."],
+      ["2", "Maximize Academics", "GPA 5.0 (mandatory), SAT 1350+, IELTS 7.0+. Math 750+ is a huge differentiator."],
+      ["3", "Killer Motivation Letter", "Research Estonia's tech scene, mention specific programs/professors. Write 5+ drafts."],
+      ["4", "Apply for ALL Scholarships", "TalTech waiver, Tartu waiver, Dora Plus (€660/mo), Estonian Gov., SEB Banking."],
+      ["5", "Build Extracurriculars", "Competitive programming, GitHub contributions, cybersecurity certs, volunteering."],
+      ["6", "Submit Early", "Apply in October when portals open. Early submission = priority review."],
+    ],
+    styles: { fontSize: 9 },
+    headStyles: { fillColor: [168, 85, 247] },
     alternateRowStyles: { fillColor: [245, 247, 250] },
   });
 
