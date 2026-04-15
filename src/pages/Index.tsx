@@ -67,6 +67,15 @@ const Index = () => {
               {tab.label}
             </Button>
           ))}
+          <Button
+            onClick={generateStudyGuidePDF}
+            variant="outline"
+            size="sm"
+            className="whitespace-nowrap flex-shrink-0"
+          >
+            <Download className="w-4 h-4 mr-1" />
+            PDF
+          </Button>
         </div>
       </div>
 
