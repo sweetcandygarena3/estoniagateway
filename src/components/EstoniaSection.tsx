@@ -1,3 +1,5 @@
+import { UniversityComparison } from "./UniversityComparison";
+
 export const EstoniaSection = () => {
   const factors = [
     {
@@ -68,6 +70,8 @@ export const EstoniaSection = () => {
           </div>
         ))}
       </div>
+
+      <UniversityComparison />
     </div>
   );
 };

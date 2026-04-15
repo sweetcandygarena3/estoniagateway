@@ -1,3 +1,5 @@
+import { ScholarshipChecklist } from "./ScholarshipChecklist";
+
 export const RoadmapSection = () => {
   const timelineSteps = [
     {
@@ -96,6 +98,8 @@ export const RoadmapSection = () => {
           ))}
         </ul>
       </div>
+
+      <ScholarshipChecklist />
     </div>
   );
 };
