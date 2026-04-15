@@ -1,4 +1,4 @@
-export const EstoniaSection = () => {
+import { UniversityComparison } from "./UniversityComparison";
   const factors = [
     {
       emoji: "🎓",
@@ -68,6 +68,8 @@ export const EstoniaSection = () => {
           </div>
         ))}
       </div>
+
+      <UniversityComparison />
     </div>
   );
 };
