@@ -4,7 +4,8 @@ import { OverviewSection } from "@/components/OverviewSection";
 import { EstoniaSection } from "@/components/EstoniaSection";
 import { FinanceSection } from "@/components/FinanceSection";
 import { RoadmapSection } from "@/components/RoadmapSection";
-import { Rocket } from "lucide-react";
+import { Rocket, Download } from "lucide-react";
+import { generateStudyGuidePDF } from "@/lib/generatePDF";
 
 type Tab = "overview" | "evaluation" | "finance" | "roadmap";
 
@@ -27,7 +28,7 @@ const Index = () => {
               <Rocket className="w-6 h-6" />
               Estonia Study Guide
             </div>
-            <div className="hidden md:flex space-x-2">
+            <div className="hidden md:flex space-x-2 items-center">
               {tabs.map((tab) => (
                 <Button
                   key={tab.id}
@@ -38,6 +39,15 @@ const Index = () => {
                   {tab.label}
                 </Button>
               ))}
+              <Button
+                onClick={generateStudyGuidePDF}
+                variant="outline"
+                size="sm"
+                className="ml-2"
+              >
+                <Download className="w-4 h-4 mr-1" />
+                PDF
+              </Button>
             </div>
           </div>
         </div>
