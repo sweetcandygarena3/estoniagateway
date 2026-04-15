@@ -1,4 +1,6 @@
 import { UniversityComparison } from "./UniversityComparison";
+
+export const EstoniaSection = () => {
   const factors = [
     {
       emoji: "🎓",
