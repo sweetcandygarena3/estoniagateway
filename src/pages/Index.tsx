@@ -4,22 +4,25 @@ import { OverviewSection } from "@/components/OverviewSection";
 import { EstoniaSection } from "@/components/EstoniaSection";
 import { FinanceSection } from "@/components/FinanceSection";
 import { RoadmapSection } from "@/components/RoadmapSection";
-import { Rocket, Download, Moon, Sun, Sparkles } from "lucide-react";
+import { Rocket, Download, Moon, Sun, Sparkles, Plane, Globe } from "lucide-react";
 import { generateStudyGuidePDF } from "@/lib/generatePDF";
 import { useTheme } from "@/hooks/useTheme";
+import { useLang } from "@/lib/i18n";
 import { Link } from "react-router-dom";
+import tallinnImg from "@/assets/tallinn-city.jpg";
 
 type Tab = "overview" | "evaluation" | "finance" | "roadmap";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const { isDark, toggle: toggleTheme } = useTheme();
+  const { lang, setLang, t } = useLang();
 
   const tabs = [
-    { id: "overview" as Tab, label: "Overview", icon: "🚀" },
+    { id: "overview" as Tab, label: t("Overview", "সারসংক্ষেপ"), icon: "🚀" },
     { id: "evaluation" as Tab, label: "Estonia", icon: "🇪🇪" },
-    { id: "finance" as Tab, label: "Finance", icon: "💰" },
-    { id: "roadmap" as Tab, label: "Roadmap", icon: "🗺️" },
+    { id: "finance" as Tab, label: t("Finance", "অর্থ"), icon: "💰" },
+    { id: "roadmap" as Tab, label: t("Roadmap", "রোডম্যাপ"), icon: "🗺️" },
   ];
 
   return (
@@ -35,7 +38,7 @@ const Index = () => {
           <div className="flex justify-between h-16 items-center">
             <div className="flex-shrink-0 flex items-center font-bold text-xl gap-2">
               <Rocket className="w-6 h-6 text-primary" />
-              <span className="gradient-text">Estonia Study Guide</span>
+              <span className="gradient-text">{t("Estonia Study Guide", "Estonia Study Guide")}</span>
             </div>
             <div className="hidden md:flex space-x-1 items-center">
               {tabs.map((tab) => (
@@ -43,19 +46,54 @@ const Index = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   variant={activeTab === tab.id ? "default" : "ghost"}
-                  className={`transition-all duration-200 ${activeTab === tab.id ? "bg-gradient-to-r from-primary to-accent text-white shadow-md" : ""}`}
+                  className={`transition-all duration-200 ${activeTab === tab.id ? "bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-md" : ""}`}
                 >
                   <span className="mr-1">{tab.icon}</span> {tab.label}
                 </Button>
               ))}
               <Link to="/scholarship-strategy">
                 <Button variant="ghost" className="text-primary">
-                  <Sparkles className="w-4 h-4 mr-1" /> Waiver Guide
+                  <Sparkles className="w-4 h-4 mr-1" /> {t("Waiver Guide", "ওয়েভার গাইড")}
                 </Button>
               </Link>
-              <Button onClick={generateStudyGuidePDF} variant="outline" size="sm" className="ml-1">
-                <Download className="w-4 h-4 mr-1" /> PDF
+              <Link to="/visa-logistics">
+                <Button variant="ghost" className="text-primary">
+                  <Plane className="w-4 h-4 mr-1" /> {t("Visa", "ভিসা")}
+                </Button>
+              </Link>
+
+              {/* PDF dropdown */}
+              <div className="relative group">
+                <Button variant="outline" size="sm" className="ml-1">
+                  <Download className="w-4 h-4 mr-1" /> PDF ▾
+                </Button>
+                <div className="absolute right-0 top-full mt-1 bg-card border border-border rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 min-w-[180px]">
+                  <button
+                    onClick={() => generateStudyGuidePDF("en")}
+                    className="w-full text-left px-4 py-2.5 text-sm hover:bg-muted/50 rounded-t-lg text-card-foreground"
+                  >
+                    🇬🇧 Download in English
+                  </button>
+                  <button
+                    onClick={() => generateStudyGuidePDF("bn")}
+                    className="w-full text-left px-4 py-2.5 text-sm hover:bg-muted/50 rounded-b-lg text-card-foreground"
+                  >
+                    🇧🇩 বাংলায় ডাউনলোড করুন
+                  </button>
+                </div>
+              </div>
+
+              {/* Language toggle */}
+              <Button
+                onClick={() => setLang(lang === "en" ? "bn" : "en")}
+                variant="ghost"
+                size="sm"
+                className="ml-1"
+              >
+                <Globe className="w-4 h-4 mr-1" />
+                {lang === "en" ? "বাং" : "EN"}
               </Button>
+
               <Button onClick={toggleTheme} variant="ghost" size="icon" className="ml-1">
                 {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </Button>
@@ -73,22 +111,49 @@ const Index = () => {
               onClick={() => setActiveTab(tab.id)}
               variant={activeTab === tab.id ? "default" : "outline"}
               size="sm"
-              className={`whitespace-nowrap flex-shrink-0 ${activeTab === tab.id ? "bg-gradient-to-r from-primary to-accent text-white" : ""}`}
+              className={`whitespace-nowrap flex-shrink-0 ${activeTab === tab.id ? "bg-gradient-to-r from-primary to-accent text-primary-foreground" : ""}`}
             >
               {tab.icon} {tab.label}
             </Button>
           ))}
           <Link to="/scholarship-strategy">
             <Button variant="outline" size="sm" className="whitespace-nowrap flex-shrink-0">
-              <Sparkles className="w-4 h-4 mr-1" /> Waiver
+              <Sparkles className="w-4 h-4 mr-1" /> {t("Waiver", "ওয়েভার")}
             </Button>
           </Link>
-          <Button onClick={generateStudyGuidePDF} variant="outline" size="sm" className="whitespace-nowrap flex-shrink-0">
-            <Download className="w-4 h-4 mr-1" /> PDF
+          <Link to="/visa-logistics">
+            <Button variant="outline" size="sm" className="whitespace-nowrap flex-shrink-0">
+              <Plane className="w-4 h-4 mr-1" /> {t("Visa", "ভিসা")}
+            </Button>
+          </Link>
+          <Button onClick={() => generateStudyGuidePDF("en")} variant="outline" size="sm" className="whitespace-nowrap flex-shrink-0">
+            <Download className="w-4 h-4 mr-1" /> EN PDF
+          </Button>
+          <Button onClick={() => generateStudyGuidePDF("bn")} variant="outline" size="sm" className="whitespace-nowrap flex-shrink-0">
+            <Download className="w-4 h-4 mr-1" /> বাং PDF
+          </Button>
+          <Button onClick={() => setLang(lang === "en" ? "bn" : "en")} variant="ghost" size="sm" className="flex-shrink-0">
+            <Globe className="w-4 h-4" /> {lang === "en" ? "বাং" : "EN"}
           </Button>
           <Button onClick={toggleTheme} variant="ghost" size="icon" className="flex-shrink-0">
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </Button>
+        </div>
+      </div>
+
+      {/* Tallinn city image banner */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div className="rounded-2xl overflow-hidden relative h-40 md:h-56">
+          <img src={tallinnImg} alt="Tallinn, Estonia - Old Town panoramic view" className="w-full h-full object-cover" width={1024} height={576} />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+          <div className="absolute bottom-4 left-6 md:bottom-6 md:left-8">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-card-foreground drop-shadow-lg">
+              {t("Your Strategic Gateway to Europe", "ইউরোপে আপনার কৌশলগত প্রবেশদ্বার")}
+            </h2>
+            <p className="text-sm text-muted-foreground drop-shadow">
+              {t("Tallinn, Estonia — EU & Schengen, e-governance pioneer", "তালিন, Estonia — EU & শেনজেন, ই-গভর্নেন্স পথিকৃৎ")}
+            </p>
+          </div>
         </div>
       </div>
 
