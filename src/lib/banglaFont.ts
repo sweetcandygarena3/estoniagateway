@@ -8,9 +8,9 @@ import type jsPDF from "jspdf";
 let cachedFontBase64: string | null = null;
 
 const FONT_URL =
-  "https://cdn.jsdelivr.net/gh/google/fonts/ofl/hindsiliguri/HindSiliguri-Regular.ttf";
+  "https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/hindsiliguri/HindSiliguri-Regular.ttf";
 const FONT_BOLD_URL =
-  "https://cdn.jsdelivr.net/gh/google/fonts/ofl/hindsiliguri/HindSiliguri-Bold.ttf";
+  "https://cdn.jsdelivr.net/gh/google/fonts@main/ofl/hindsiliguri/HindSiliguri-Bold.ttf";
 
 const arrayBufferToBase64 = (buffer: ArrayBuffer): string => {
   let binary = "";
